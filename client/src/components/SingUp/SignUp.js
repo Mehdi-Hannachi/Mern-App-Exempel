@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { signUp } from "../../JS/actions/authActions";
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -28,12 +30,15 @@ const SignUp = () => {
     };
 
     dispatch(signUp(newUser));
+
     setEmail("");
     setFirstName("");
     setlastName("");
     setAdress("");
     setPassword("");
     setPhoneNumber("");
+
+    navigate("/signin");
   };
 
   return (
