@@ -8,11 +8,22 @@ const userSchema = new mongoose.Schema({
   email: String,
   adress: String,
   phoneNumber: String,
+
+  photo: {
+    type: String,
+  },
   role: {
     type: String,
     enum: ["admin", "client"],
     default: "client",
   },
+
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
   password: String,
 });
 

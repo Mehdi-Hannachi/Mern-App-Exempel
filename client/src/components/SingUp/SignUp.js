@@ -14,9 +14,6 @@ const SignUp = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [adress, setAdress] = useState("");
 
-  const msg = useSelector((state) => state.authReducer.msg);
-  const errors = useSelector((state) => state.authReducer.errors);
-
   const register = (e) => {
     e.preventDefault();
 
@@ -46,8 +43,6 @@ const SignUp = () => {
       <h1>SignUp</h1>
 
       <form>
-        {/* {msg ? <h1> {msg} </h1> : null} */}
-        {/* {errors.length !== 0 ? <h1>{errors[0].msg} </h1> : null} */}
         <input
           type="text"
           placeholder="First Name ... "

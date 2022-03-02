@@ -1,4 +1,7 @@
 import {
+  GET_AUTH_USER,
+  GET_AUTH_USER_FAILED,
+  GET_AUTH_USER_SUCCESS,
   SIGN_IN,
   SIGN_IN_FAILED,
   SIGN_IN_SUCCESS,
@@ -30,5 +33,25 @@ export const signIn = (userCred) => async (dispatch) => {
     dispatch({ type: SIGN_IN_SUCCESS, payload: response.data.token });
   } catch (error) {
     dispatch({ type: SIGN_IN_FAILED, payload: error.response.data });
+  }
+};
+
+/*****************************  get auth user action creator ***************** */
+
+export const getAuthUser = () => async (dispatch) => {
+  dispatch({ type: GET_AUTH_USER });
+
+  try {
+    const config = {
+      headers: {
+        authorization: localStorage.getItem("token"),
+      },
+    };
+
+    const response = await axios.get("/user/currentUser", config);
+
+    dispatch({ type: GET_AUTH_USER_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: GET_AUTH_USER_FAILED, payload: error.response.data });
   }
 };
