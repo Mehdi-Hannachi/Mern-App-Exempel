@@ -26,7 +26,7 @@ Router.delete("/deletProduct/:idProduct", isAuth(), deleteProduct);
 
 //  http://localhost:9000/product/products
 //getAllProducts
-Router.get("/products", getAllProducts);
+Router.get("/products", isAuth(), getAllProducts);
 
 //  http://localhost:9000/product/:id
 // get Product by id

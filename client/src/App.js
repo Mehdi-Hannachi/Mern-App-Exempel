@@ -9,6 +9,8 @@ import { getAuthUser } from "./JS/actions/authActions";
 import Home from "./components/Home/Home";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import GuestNav from "./components/NavBar/GuestNav";
+import ProductsList from "./components/ProductsList/ProductsList";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +36,17 @@ function App() {
               </PrivateRoute>
             }
           />
+
+          <Route
+            path="/productslist"
+            element={
+              <PrivateRoute>
+                <ProductsList />
+              </PrivateRoute>
+            }
+          />
+
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </header>
     </div>

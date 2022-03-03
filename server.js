@@ -4,6 +4,7 @@ const express = require("express");
 const connectDB = require("./config/connectDB");
 const auth = require("./routes/auth");
 const product = require("./routes/product");
+const user = require("./routes/user");
 
 //Create local middleware
 const logger = (req, res, next) => {
@@ -26,6 +27,7 @@ app.use(logger);
 // 3 - Create endpoints (routes)
 app.use("/user", auth);
 app.use("/product", product);
+app.use("/", user);
 
 // // Show one file
 

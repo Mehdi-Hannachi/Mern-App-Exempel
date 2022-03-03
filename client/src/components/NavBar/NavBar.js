@@ -8,6 +8,17 @@ const NavBar = () => {
   return (
     <div>
       <button onClick={() => dispatch(logout())}>Logout</button>
+
+      <ul>
+        <li>Profile </li>
+
+        <Link to="/profile">
+          <li> Profile</li>
+        </Link>
+        <Link to="/productslist">
+          <li> All Products</li>
+        </Link>
+      </ul>
     </div>
   );
 };

@@ -31,7 +31,7 @@ exports.userRegister = async (req, res) => {
     newUser.password = hash;
 
     newUser.save();
-    res.status(202).json({ msg: "Rgister success", token: `Bearer ${token}` });
+    res.status(202).json({ msg: "Register success", token: `Bearer ${token}` });
   } catch (error) {
     console.log(error);
     res.status(402).json({ msg: "User register failed", errors: error });
