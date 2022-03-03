@@ -1,15 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../../JS/actions/authActions";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   return (
     <div>
-      <Link to="/signin">
-        <button> Sign In </button>
-      </Link>
-      <Link to="/signup">
-        <button> Sign Up </button>
-      </Link>
+      <button onClick={() => dispatch(logout())}>Logout</button>
     </div>
   );
 };

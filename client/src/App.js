@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import { Route, Routes } from "react-router-dom";
@@ -9,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAuthUser } from "./JS/actions/authActions";
 import Home from "./components/Home/Home";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import GuestNav from "./components/NavBar/GuestNav";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,14 +20,14 @@ function App() {
 
   return (
     <div className="App">
-      {isAuth ? <button>Logout</button> : <NavBar />}
+      {isAuth ? <NavBar /> : <GuestNav />}
 
       <header className="App-header">
         <Routes>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route
-            path="/home"
+            path="/"
             element={
               <PrivateRoute>
                 <Home />

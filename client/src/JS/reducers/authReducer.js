@@ -2,6 +2,7 @@ import {
   GET_AUTH_USER,
   GET_AUTH_USER_FAILED,
   GET_AUTH_USER_SUCCESS,
+  LOG_OUT,
   SIGN_IN,
   SIGN_IN_FAILED,
   SIGN_IN_SUCCESS,
@@ -62,7 +63,11 @@ const authReducer = (state = initialState, { type, payload }) => {
         errors: payload,
         isAuth: false,
       };
-
+    case LOG_OUT:
+      return {
+        ...state,
+        isAuth: false,
+      };
     default:
       return state;
   }

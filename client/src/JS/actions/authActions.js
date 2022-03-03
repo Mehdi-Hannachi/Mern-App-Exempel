@@ -2,6 +2,7 @@ import {
   GET_AUTH_USER,
   GET_AUTH_USER_FAILED,
   GET_AUTH_USER_SUCCESS,
+  LOG_OUT,
   SIGN_IN,
   SIGN_IN_FAILED,
   SIGN_IN_SUCCESS,
@@ -16,6 +17,8 @@ export const signUp = (newUser) => async (dispatch) => {
 
   try {
     const response = await axios.post("/user/register", newUser);
+
+    localStorage.setItem("token", response.data.token);
 
     dispatch({ type: SIGN_UP_SUCCESS, payload: response.data });
   } catch (error) {
@@ -54,4 +57,11 @@ export const getAuthUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({ type: GET_AUTH_USER_FAILED, payload: error.response.data });
   }
+};
+
+/***************************** log out ***************** */
+
+export const logout = () => async (dispatch) => {
+  dispatch({ type: LOG_OUT });
+  localStorage.removeItem("token");
 };

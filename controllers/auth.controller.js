@@ -12,6 +12,17 @@ exports.userRegister = async (req, res) => {
     const user = await User.findOne({ email });
     if (user) return res.status(402).json({ msg: "User already exist" });
 
+    const payload = {
+      id: newUser._id,
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
+      phoneNumber: newUser.phoneNumber,
+      email: newUser.email,
+      adress: newUser.adress,
+    };
+
+    const token = await jwt.sign(payload, process.env.secretOrPrivateKey);
+
     // Hashage algorith complexity
     const salt = await bcrypt.genSalt(10);
     // Hashed password
@@ -20,7 +31,7 @@ exports.userRegister = async (req, res) => {
     newUser.password = hash;
 
     newUser.save();
-    res.status(202).json({ msg: "Rgister success" });
+    res.status(202).json({ msg: "Rgister success", token: `Bearer ${token}` });
   } catch (error) {
     console.log(error);
     res.status(402).json({ msg: "User register failed", errors: error });
