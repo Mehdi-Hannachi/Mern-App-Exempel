@@ -1,17 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Link, NavLink } from "react-router-dom";
 
-const GuestNav = () => {
+export default function ButtonAppBar() {
   return (
-    <div>
-      <Link to="/signin">
-        <button> Sign In </button>
-      </Link>
-      <Link to="/signup">
-        <button> Sign Up </button>
-      </Link>
-    </div>
-  );
-};
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" noWrap component="div">
+            LOGO
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Landing Page
+          </Typography>
 
-export default GuestNav;
+          <Button component={Link} to={{ pathname: "/signin" }} color="inherit">
+            SignIn
+          </Button>
+
+          <Button component={Link} to={{ pathname: "/signup" }} color="inherit">
+            SingUp
+          </Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}

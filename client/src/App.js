@@ -24,31 +24,29 @@ function App() {
     <div className="App">
       {isAuth ? <NavBar /> : <GuestNav />}
 
-      <header className="App-header">
-        <Routes>
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route
-            path="/"
-            element={
-              <PrivateRoute>
-                <Home />
-              </PrivateRoute>
-            }
-          />
+      <Routes>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
 
-          <Route
-            path="/productslist"
-            element={
-              <PrivateRoute>
-                <ProductsList />
-              </PrivateRoute>
-            }
-          />
+        <Route
+          path="/productslist"
+          element={
+            <PrivateRoute>
+              <ProductsList />
+            </PrivateRoute>
+          }
+        />
 
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      </header>
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
     </div>
   );
 }
