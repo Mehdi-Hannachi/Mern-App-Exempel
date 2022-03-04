@@ -15,7 +15,7 @@ export const getUserById = () => async (dispatch) => {
       },
     };
 
-    const response = await axios.get("/oneuser", config);
+    const response = await axios.get("/user", config);
 
     dispatch({ type: GET_USER_BY_ID_SUCCESS, payload: response.data });
   } catch (error) {

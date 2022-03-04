@@ -25,9 +25,9 @@ connectDB();
 app.use(logger);
 
 // 3 - Create endpoints (routes)
-app.use("/user", auth);
+app.use("/auth", auth);
 app.use("/product", product);
-app.use("/", user);
+app.use("/user", user);
 
 // // Show one file
 

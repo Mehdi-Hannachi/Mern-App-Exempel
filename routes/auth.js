@@ -5,19 +5,19 @@ const isAuth = require("../middlewares/passport-setup");
 const Router = express.Router();
 
 // POST register user
-// POST  "http://localhost:9000/user/register"
+// POST  "http://localhost:9000/auth/register"
 // @desc  : user register
 
 Router.post("/register", userRegister);
 
 // POST login user
-// POST  "http://localhost:9000/user/login"
+// POST  "http://localhost:9000/auth/login"
 // @desc  : user login
 
 Router.post("/login", userLogin);
 
 // GET currentUser
-// GET "http://localhost:9000/user/currentUser"
+// GET "http://localhost:9000/auth/currentUser"
 // @desc get authenticated user
 
 Router.get("/currentUser", isAuth(), (req, res) => {

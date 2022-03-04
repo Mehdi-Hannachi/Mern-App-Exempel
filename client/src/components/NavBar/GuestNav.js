@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, NavLink } from "react-router-dom";
 
-export default function ButtonAppBar() {
+export default function GuestNav() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -17,7 +17,6 @@ export default function ButtonAppBar() {
             LOGO
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Landing Page
           </Typography>
 
           <Button component={Link} to={{ pathname: "/signin" }} color="inherit">

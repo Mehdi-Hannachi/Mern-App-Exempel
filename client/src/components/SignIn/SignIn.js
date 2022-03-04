@@ -52,7 +52,7 @@ export default function SignIn() {
     if (isAuth) {
       navigate("/");
     }
-  }, [isAuth]);
+  });
 
   const login = (e) => {
     e.preventDefault();

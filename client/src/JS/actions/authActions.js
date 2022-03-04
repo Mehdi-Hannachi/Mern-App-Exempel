@@ -16,7 +16,7 @@ export const signUp = (newUser) => async (dispatch) => {
   dispatch({ type: SIGN_UP });
 
   try {
-    const response = await axios.post("/user/register", newUser);
+    const response = await axios.post("/auth/register", newUser);
 
     localStorage.setItem("token", response.data.token);
 
@@ -29,7 +29,7 @@ export const signIn = (userCred) => async (dispatch) => {
   dispatch({ type: SIGN_IN });
 
   try {
-    const response = await axios.post("/user/login", userCred);
+    const response = await axios.post("/auth/login", userCred);
 
     localStorage.setItem("token", response.data.token);
 
@@ -51,7 +51,7 @@ export const getAuthUser = () => async (dispatch) => {
       },
     };
 
-    const response = await axios.get("/user/currentUser", config);
+    const response = await axios.get("/auth/currentUser", config);
 
     dispatch({ type: GET_AUTH_USER_SUCCESS, payload: response.data });
   } catch (error) {

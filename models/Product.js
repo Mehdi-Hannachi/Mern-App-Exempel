@@ -9,6 +9,11 @@ const productSchema = mongoose.Schema({
   model: String,
   price: String,
   desc: String,
+
+  dateOfCreactionProduct: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 module.exports = mongoose.model("Product", productSchema);
