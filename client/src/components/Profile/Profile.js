@@ -15,7 +15,7 @@ const Profile = () => {
   }, []);
 
   return loading ? (
-    <h1>Please wait ... </h1>
+    <h1 style={{ marginTop: "100px" }}>Please wait ... </h1>
   ) : (
     <div className="user-profile">
       <section className="user-details">

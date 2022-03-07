@@ -15,7 +15,6 @@ exports.addProduct = async (req, res) => {
 
     const user = await User.findOne({ _id: req.user._id });
 
-    console.log(user);
 
     user.products = [...user.products, newProduct.id];
 

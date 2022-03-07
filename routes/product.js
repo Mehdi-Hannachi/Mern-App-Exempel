@@ -22,7 +22,7 @@ Router.put("/updateProduct/:idProduct", isAuth(), updateProduct);
 //  http://localhost:9000/product/deleteProduct/:idProduct
 // delete Product
 
-Router.delete("/deletProduct/:idProduct", isAuth(), deleteProduct);
+Router.delete("/deleteProduct/:idProduct", isAuth(), deleteProduct);
 
 //  http://localhost:9000/product/products
 //getAllProducts

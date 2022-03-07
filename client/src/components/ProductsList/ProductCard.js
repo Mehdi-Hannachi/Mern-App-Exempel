@@ -14,9 +14,10 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import ProductForm from "../ProductForm/ProductForm";
+import { deleteProduct } from "../../JS/actions/productsActions";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,11 +31,14 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function ProductCard({
-  product: { _id, userId, brand, model, price, desc, dateOfCreactionProduct },
+  // product: { _id, userId, brand, model, price, desc, dateOfCreactionProduct },
+  product,
 }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const user = useSelector((state) => state.authReducer.user);
+
+  const dispatch = useDispatch();
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -54,7 +58,7 @@ export default function ProductCard({
           </IconButton>
         }
         title="Shrimp and Chorizo Paella"
-        subheader={dateOfCreactionProduct}
+        subheader={product.dateOfCreactionProduct}
       />
       <CardMedia
         component="img"
@@ -64,17 +68,21 @@ export default function ProductCard({
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {desc}
+          {product.desc}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        {userId === user._id ? (
+        {product.userId === user._id ? (
           <>
-            <IconButton aria-label="add to favorites">
-              <EditIcon />
-            </IconButton>
+            <ProductForm
+              idProduct={product._id}
+              edit={true}
+              product={product}
+            />
             <IconButton aria-label="share">
-              <DeleteIcon />
+              <DeleteIcon
+                onClick={() => dispatch(deleteProduct(product._id))}
+              />
             </IconButton>
           </>
         ) : null}
@@ -91,9 +99,9 @@ export default function ProductCard({
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Characteristic :</Typography>
-          <Typography paragraph>brand : {brand}</Typography>
-          <Typography paragraph>Model : {model}</Typography>
-          <Typography paragraph>Price : {price} $</Typography>
+          <Typography paragraph>brand : {product.brand}</Typography>
+          <Typography paragraph>Model : {product.model}</Typography>
+          <Typography paragraph>Price : {product.price} $</Typography>
         </CardContent>
       </Collapse>
     </Card>

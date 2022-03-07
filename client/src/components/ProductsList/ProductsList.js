@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../JS/actions/productsActions";
+import ProductForm from "../ProductForm/ProductForm";
 import ProductCard from "./ProductCard";
 import "./productslist.css";
 
@@ -16,6 +17,8 @@ const ProductsList = () => {
 
   return (
     <div className="products">
+      <ProductForm edit={false} />
+
       {products.map((product) => (
         <ProductCard product={product} key={product._id} />
       ))}

@@ -11,13 +11,16 @@ import { Link, NavLink } from "react-router-dom";
 export default function GuestNav() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
             LOGO
           </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          ></Typography>
 
           <Button component={Link} to={{ pathname: "/signin" }} color="inherit">
             SignIn
