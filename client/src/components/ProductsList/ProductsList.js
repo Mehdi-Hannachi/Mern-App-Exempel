@@ -8,14 +8,15 @@ import "./productslist.css";
 const ProductsList = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, []);
-
   const products = useSelector((state) => state.productsReducer.products);
   const loading = useSelector((state) => state.productsReducer.loading);
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
-  return (
+  return loading ? (
+    <h1>Please wait ... </h1>
+  ) : (
     <div className="products">
       <ProductForm edit={false} />
 

@@ -87,21 +87,21 @@ function ProductForm({ edit, product }) {
           <br />
           <Form.Control
             type="text"
-            placeholder="Normal text"
+            placeholder="Model ..."
             value={model}
             onChange={(e) => setModel(e.target.value)}
           />
           <br />
           <Form.Control
             type="text"
-            placeholder="Normal text"
+            placeholder="Price ..."
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
           <br />
           <Form.Control
             type="text"
-            placeholder="Normal text"
+            placeholder="Desc ..."
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
           />

@@ -5,7 +5,7 @@ import {
   GET_USER_BY_ID_SUCCESS,
 } from "../actionstypes/usertypes";
 
-export const getUserById = () => async (dispatch) => {
+export const getUserById = (id) => async (dispatch) => {
   dispatch({ type: GET_USER_BY_ID });
 
   try {
@@ -15,7 +15,7 @@ export const getUserById = () => async (dispatch) => {
       },
     };
 
-    const response = await axios.get("/user", config);
+    const response = await axios.get(`/user/${id}`, config);
 
     dispatch({ type: GET_USER_BY_ID_SUCCESS, payload: response.data });
   } catch (error) {

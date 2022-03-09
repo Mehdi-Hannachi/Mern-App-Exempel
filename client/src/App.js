@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getAuthUser());
-  }, [isAuth]);
+  }, [isAuth, dispatch]);
 
   return (
     <div className="App">

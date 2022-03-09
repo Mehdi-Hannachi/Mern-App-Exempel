@@ -15,8 +15,8 @@ const initialState = {
   loading: false,
   msg: "",
   errors: [],
-  token: "",
-  // isAuth: false,
+  isAuth: false,
+  products: [],
   user: {},
 };
 
@@ -34,7 +34,7 @@ const authReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        token: payload,
+        msg: payload,
         isAuth: true,
       };
 
@@ -48,9 +48,11 @@ const authReducer = (state = initialState, { type, payload }) => {
 
     case GET_AUTH_USER_SUCCESS:
       return {
-        ...state,
+        // ...state,
         loading: false,
         user: payload,
+        msg: "",
+        products: payload.products,
         isAuth: true,
       };
 
@@ -66,7 +68,10 @@ const authReducer = (state = initialState, { type, payload }) => {
     case LOG_OUT:
       return {
         ...state,
+        loading: false,
         isAuth: false,
+        msg: "",
+        errors: [],
       };
     default:
       return state;

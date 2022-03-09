@@ -35,6 +35,7 @@ export const signIn = (userCred) => async (dispatch) => {
 
     dispatch({ type: SIGN_IN_SUCCESS, payload: response.data.token });
   } catch (error) {
+    console.log(error);
     dispatch({ type: SIGN_IN_FAILED, payload: error.response.data });
   }
 };
@@ -55,6 +56,8 @@ export const getAuthUser = () => async (dispatch) => {
 
     dispatch({ type: GET_AUTH_USER_SUCCESS, payload: response.data });
   } catch (error) {
+    console.log(error);
+    localStorage.removeItem("token");
     dispatch({ type: GET_AUTH_USER_FAILED, payload: error.response.data });
   }
 };

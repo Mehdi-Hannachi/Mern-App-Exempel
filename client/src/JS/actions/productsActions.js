@@ -13,7 +13,7 @@ import {
   UPDATE_PRODUCT_FAILED,
   UPDATE_PRODUCT_SUCCESS,
 } from "../actionstypes/productstypes";
-import { getUserById } from "./userActions";
+import { getAuthUser } from "./authActions";
 
 export const getAllProducts = () => async (dispatch) => {
   dispatch({ type: GET_PRODUCTS });
@@ -51,9 +51,8 @@ export const updateProduct =
       );
 
       dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: response.data });
-
-      await dispatch(getAllProducts());
-      // await dispatch(getUserById());
+      dispatch(getAllProducts());
+      dispatch(getAuthUser());
     } catch (error) {
       dispatch({ type: UPDATE_PRODUCT_FAILED, payload: error.response.data });
     }
@@ -76,6 +75,7 @@ export const addProduct = (newProduct) => async (dispatch) => {
     );
     dispatch({ type: ADD_PRODUCT_SUCCESS, payload: response.data });
     dispatch(getAllProducts());
+    dispatch(getAuthUser());
   } catch (error) {
     dispatch({ type: ADD_PRODUCT_FAILED, payload: error.response.data });
   }
